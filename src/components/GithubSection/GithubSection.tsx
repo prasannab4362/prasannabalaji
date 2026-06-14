@@ -13,8 +13,8 @@ interface Repo {
 
 export default async function GithubSection() {
   // Fetch repos directly from GitHub API
-  // Revalidate every hour (3600 seconds) to stay fresh but avoid rate limits
-  const res = await fetch('https://api.github.com/users/prasannab4362/repos?sort=pushed&per_page=6', {
+  // Fetch more (20) to ensure we have enough after filtering
+  const res = await fetch('https://api.github.com/users/prasannab4362/repos?sort=pushed&per_page=20', {
     next: { revalidate: 3600 }
   });
 
@@ -30,7 +30,17 @@ export default async function GithubSection() {
     );
   }
 
-  const repos: Repo[] = await res.json();
+  const allRepos: Repo[] = await res.json();
+
+  // Exclude repositories containing 'video', 'vlm', or 'car'
+  const excludeKeywords = ['video', 'vlm', 'car'];
+  const repos = allRepos
+    .filter((repo) => {
+      const name = repo.name.toLowerCase();
+      const desc = (repo.description || '').toLowerCase();
+      return !excludeKeywords.some((keyword) => name.includes(keyword) || desc.includes(keyword));
+    })
+    .slice(0, 6);
 
   return (
     <section className={styles.container} id="github-section">
@@ -41,24 +51,24 @@ export default async function GithubSection() {
           <h2 className={styles.title}>Open Source & Projects</h2>
           <p className={styles.subtitle}>Automatically updated with my latest GitHub contributions.</p>
         </div>
-
-        {/* GitHub Streaks Banner */}
-        <div className={styles.streakContainer}>
-          <h3 className={styles.sectionHeading}>Contribution Streaks</h3>
-          <div className={styles.streakWrapper}>
-            <img 
-              src="https://github-readme-streak-stats.herokuapp.com/?user=prasannab4362&theme=radical&hide_border=true&background=0d1117" 
-              alt="GitHub Streak" 
-              className={styles.streakImage}
-            />
-          </div>
-        </div>
-
-        {/* Repositories Grid */}
-        <div className={styles.reposContainer}>
-          <h3 className={styles.sectionHeading}>Latest Repositories</h3>
-          <div className={styles.grid}>
-            {repos.map((repo) => (
+ 
+         {/* GitHub Streaks Banner */}
+         <div className={styles.streakContainer}>
+           <h3 className={styles.sectionHeading}>Contribution Streaks</h3>
+           <div className={styles.streakWrapper}>
+             <img 
+               src="https://github-readme-streak-stats.herokuapp.com/?user=prasannab4362&theme=radical&hide_border=true&background=0d1117" 
+               alt="GitHub Streak" 
+               className={styles.streakImage}
+             />
+           </div>
+         </div>
+ 
+         {/* Repositories Grid */}
+         <div className={styles.reposContainer}>
+           <h3 className={styles.sectionHeading}>Latest Repositories</h3>
+           <div className={styles.grid}>
+             {repos.map((repo) => (
               <a 
                 key={repo.id} 
                 href={repo.html_url} 
