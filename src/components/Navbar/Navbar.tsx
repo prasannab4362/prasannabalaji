@@ -20,8 +20,11 @@ export default function Navbar() {
   return (
     <nav className={styles.navbar}>
       <Link href="/" className={styles.brand}>
-        <span className={styles.name}>Prasanna B</span>
-        <span className={styles.title}>AI & Automation Hub</span>
+        <img src="/logo.jpg" alt="Logo" className={styles.logo} />
+        <div className={styles.brandText}>
+          <span className={styles.name}>Prasanna B</span>
+          <span className={styles.title}>AI & Automation Hub</span>
+        </div>
       </Link>
       <div className={styles.links}>
         {navLinks.map((link) => (

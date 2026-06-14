@@ -16,9 +16,29 @@
 
 .brand {
   display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 0.8rem;
+  text-decoration: none;
+}
+
+.logo {
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  border: 2px solid var(--primary-accent);
+  object-fit: cover;
+  transition: transform 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.brand:hover .logo {
+  transform: rotate(360deg);
+}
+
+.brandText {
+  display: flex;
   flex-direction: column;
   justify-content: center;
-  text-decoration: none;
 }
 
 .name {
