@@ -52,7 +52,7 @@ export default function Footer() {
         </div>
 
         <div className={styles.copyright}>
-          &copy; {new Date().getFullYear()} Prasanna B | AI & Automation Hub. All rights reserved.
+          &copy; {new Date().getFullYear()} Prasanna B | AI and Automation. All rights reserved.
         </div>
       </div>
     </footer>

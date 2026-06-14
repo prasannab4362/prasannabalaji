@@ -1,12 +1,42 @@
 .container {
   width: 100vw;
-  padding: 4rem 0;
+  padding: 6rem 2rem;
   background: var(--background);
   position: relative;
   z-index: 10;
   overflow: hidden;
-  border-top: 1px solid rgba(16, 185, 129, 0.1);
-  border-bottom: 1px solid rgba(16, 185, 129, 0.1);
+}
+
+.header {
+  text-align: center;
+  margin-bottom: 5rem;
+  max-width: 700px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.tagline {
+  font-size: 0.85rem;
+  font-weight: 700;
+  letter-spacing: 0.15em;
+  color: var(--primary-accent);
+  text-transform: uppercase;
+  margin-bottom: 1rem;
+  display: inline-block;
+}
+
+.title {
+  font-size: clamp(2.5rem, 5vw, 3.5rem);
+  font-weight: 800;
+  color: #ffffff;
+  margin-bottom: 1.2rem;
+  line-height: 1.2;
+}
+
+.subtitle {
+  font-size: clamp(1rem, 1.5vw, 1.15rem);
+  line-height: 1.6;
+  color: rgba(255, 255, 255, 0.7);
 }
 
 .marqueeWrap {
@@ -14,15 +44,20 @@
   overflow: hidden;
   white-space: nowrap;
   position: relative;
+  margin-bottom: 4rem;
+  padding: 1.5rem 0;
+  background: rgba(16, 185, 129, 0.01);
+  border-top: 1px solid rgba(16, 185, 129, 0.05);
+  border-bottom: 1px solid rgba(16, 185, 129, 0.05);
 }
 
-/* Create a gradient mask for fading edges */
+/* Gradient fading masks */
 .marqueeWrap::before,
 .marqueeWrap::after {
   content: '';
   position: absolute;
   top: 0;
-  width: 150px;
+  width: 180px;
   height: 100%;
   z-index: 2;
   pointer-events: none;
@@ -41,29 +76,32 @@
 .marqueeTrack {
   display: flex;
   width: max-content;
-  animation: marquee 40s linear infinite;
+  animation: marquee 35s linear infinite;
 }
 
 .marqueeTrack span {
   font-family: 'Outfit', sans-serif;
-  font-size: 2rem;
+  font-size: 1.6rem;
   font-weight: 700;
-  color: rgba(255, 255, 255, 0.6);
+  color: rgba(255, 255, 255, 0.45);
   padding: 0 2rem;
   display: flex;
   align-items: center;
-  transition: color 0.3s ease;
+  transition: all 0.3s ease;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
 }
 
 .marqueeTrack span:hover {
   color: var(--primary-accent);
+  text-shadow: 0 0 10px rgba(16, 185, 129, 0.5);
 }
 
 .marqueeTrack span::after {
   content: '✦';
   margin-left: 4rem;
   color: var(--secondary-accent);
-  font-size: 1rem;
+  font-size: 0.9rem;
 }
 
 @keyframes marquee {
@@ -71,52 +109,96 @@
   100% { transform: translateX(-50%); }
 }
 
-/* Category Grid */
+/* Category Grid & 3D Tilt properties */
 .categories {
   max-width: 1200px;
-  margin: 4rem auto 0;
-  padding: 0 2rem;
+  margin: 0 auto;
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-  gap: 2rem;
+  grid-template-columns: repeat(auto-fit, minmax(450px, 1fr));
+  gap: 2.5rem;
+  perspective: 1200px; /* Required for 3D depth */
+}
+
+@media (max-width: 768px) {
+  .categories {
+    grid-template-columns: 1fr;
+  }
 }
 
 .category {
-  background: rgba(16, 185, 129, 0.03);
-  border: 1px solid rgba(16, 185, 129, 0.1);
-  border-radius: 16px;
-  padding: 2rem;
-  backdrop-filter: blur(10px);
-  transition: transform 0.3s ease, border-color 0.3s ease;
+  background: rgba(16, 185, 129, 0.02);
+  border: 1px solid rgba(16, 185, 129, 0.08);
+  border-radius: 20px;
+  padding: 2.5rem;
+  backdrop-filter: blur(12px);
+  transform-style: preserve-3d; /* Required for child layers in 3D */
+  will-change: transform, box-shadow, border-color;
+  transition: box-shadow 0.3s ease, border-color 0.3s ease;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  min-height: 280px;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
 }
 
-.category:hover {
-  transform: translateY(-5px);
-  border-color: rgba(16, 185, 129, 0.3);
+.cardHeader {
+  transform: translateZ(40px); /* Pushes header outwards in 3D space */
+  margin-bottom: 2rem;
 }
 
 .catTitle {
   font-family: 'Outfit', sans-serif;
-  font-size: 1.25rem;
+  font-size: 1.45rem;
   font-weight: 700;
-  color: #fff;
-  margin-bottom: 1rem;
-  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
-  padding-bottom: 0.5rem;
+  color: #ffffff;
+  margin-bottom: 0.5rem;
+}
+
+.catDesc {
+  font-size: 0.9rem;
+  color: rgba(255, 255, 255, 0.5);
+  line-height: 1.5;
 }
 
 .tags {
   display: flex;
   flex-wrap: wrap;
-  gap: 0.5rem;
+  gap: 0.75rem;
+  transform: translateZ(30px); /* Pushes tags outwards in 3D space */
 }
 
 .tag {
-  background: rgba(255, 255, 255, 0.05);
-  color: rgba(255, 255, 255, 0.8);
-  padding: 0.4rem 0.8rem;
-  border-radius: 20px;
+  background: rgba(255, 255, 255, 0.03);
+  color: rgba(255, 255, 255, 0.85);
+  padding: 0.5rem 1rem;
+  border-radius: 30px;
   font-size: 0.85rem;
   font-weight: 500;
-  border: 1px solid rgba(255, 255, 255, 0.1);
+  border: 1px solid rgba(255, 255, 255, 0.05);
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  transition: all 0.3s ease;
+}
+
+.tag:hover {
+  background: rgba(16, 185, 129, 0.08);
+  border-color: rgba(16, 185, 129, 0.3);
+  color: #ffffff;
+  transform: translateY(-2px);
+}
+
+.tagDot {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: var(--primary-accent);
+  display: inline-block;
+  opacity: 0.7;
+}
+
+.tag:hover .tagDot {
+  background: var(--secondary-accent);
+  box-shadow: 0 0 8px var(--secondary-accent);
+  opacity: 1;
 }

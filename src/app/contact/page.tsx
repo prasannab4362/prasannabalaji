@@ -1,7 +1,7 @@
 import ContactSection from "@/components/ContactSection/ContactSection";
 
 export const metadata = {
-  title: "Contact | Prasanna B - AI & Automation Hub",
+  title: "Contact | Prasanna B - AI and Automation",
   description: "Get in touch with Prasanna B for AI engineering, LLM orchestration, computer vision projects, or collaborations.",
 };
 

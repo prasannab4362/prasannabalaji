@@ -23,7 +23,7 @@ export default function Navbar() {
         <img src="/logo.jpg" alt="Logo" className={styles.logo} />
         <div className={styles.brandText}>
           <span className={styles.name}>Prasanna B</span>
-          <span className={styles.title}>AI & Automation Hub</span>
+          <span className={styles.title}>AI and Automation</span>
         </div>
       </Link>
       <div className={styles.links}>
