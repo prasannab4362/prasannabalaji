@@ -1,0 +1,99 @@
+.footer {
+  width: 100vw;
+  padding: 4rem 2rem 2rem 2rem;
+  background: linear-gradient(to bottom, transparent, rgba(5, 10, 8, 0.95));
+  border-top: 1px solid rgba(16, 185, 129, 0.1);
+  position: relative;
+  z-index: 50;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.container {
+  max-width: 1000px;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 2rem;
+}
+
+.title {
+  font-family: 'Outfit', sans-serif;
+  font-size: clamp(2rem, 4vw, 3rem);
+  font-weight: 800;
+  color: #fff;
+  text-align: center;
+}
+
+.title span {
+  color: var(--primary-accent);
+}
+
+.contactGrid {
+  display: flex;
+  gap: 2rem;
+  flex-wrap: wrap;
+  justify-content: center;
+  width: 100%;
+}
+
+.contactCard {
+  background: rgba(255, 255, 255, 0.03);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  padding: 1.5rem 2rem;
+  border-radius: 12px;
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  transition: all 0.3s ease;
+  text-decoration: none;
+  min-width: 280px;
+}
+
+.contactCard:hover {
+  background: rgba(16, 185, 129, 0.05);
+  border-color: rgba(16, 185, 129, 0.4);
+  transform: translateY(-5px);
+}
+
+.iconWrapper {
+  color: var(--primary-accent);
+  background: rgba(16, 185, 129, 0.1);
+  padding: 0.75rem;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.contactInfo {
+  display: flex;
+  flex-direction: column;
+}
+
+.label {
+  font-size: 0.8rem;
+  color: rgba(255, 255, 255, 0.5);
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  margin-bottom: 0.25rem;
+}
+
+.value {
+  font-family: 'Inter', sans-serif;
+  font-weight: 600;
+  color: #fff;
+  font-size: 1rem;
+}
+
+.copyright {
+  margin-top: 4rem;
+  font-size: 0.85rem;
+  color: rgba(255, 255, 255, 0.4);
+  text-align: center;
+  border-top: 1px solid rgba(255, 255, 255, 0.05);
+  padding-top: 2rem;
+  width: 100%;
+}

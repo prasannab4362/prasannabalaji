@@ -1,0 +1,112 @@
+.container {
+  width: 100vw;
+  padding: 6rem 2rem;
+  background: var(--background);
+  position: relative;
+  z-index: 10;
+  display: flex;
+  justify-content: center;
+}
+
+.content {
+  max-width: 1200px;
+  width: 100%;
+}
+
+.sectionTitle {
+  font-family: 'Outfit', sans-serif;
+  font-size: clamp(2.5rem, 5vw, 3.5rem);
+  font-weight: 800;
+  color: #fff;
+  margin-bottom: 4rem;
+  text-align: center;
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+  gap: 2rem;
+}
+
+.projectCard {
+  background: rgba(255, 255, 255, 0.02);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 16px;
+  overflow: hidden;
+  transition: all 0.4s ease;
+  display: flex;
+  flex-direction: column;
+}
+
+.projectCard:hover {
+  transform: translateY(-10px);
+  border-color: var(--primary-accent);
+  box-shadow: 0 15px 40px rgba(16, 185, 129, 0.15);
+}
+
+.cardVisual {
+  height: 200px;
+  background: linear-gradient(135deg, rgba(16, 185, 129, 0.1), rgba(0, 0, 0, 0.5));
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  overflow: hidden;
+}
+
+.cardVisual::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(circle at center, transparent 0%, rgba(5, 10, 8, 1) 100%);
+}
+
+.iconWrapper {
+  z-index: 2;
+  color: var(--primary-accent);
+  opacity: 0.8;
+  transition: transform 0.4s ease;
+}
+
+.projectCard:hover .iconWrapper {
+  transform: scale(1.1);
+  opacity: 1;
+}
+
+.cardBody {
+  padding: 2rem;
+  flex-grow: 1;
+  display: flex;
+  flex-direction: column;
+}
+
+.projectTitle {
+  font-family: 'Outfit', sans-serif;
+  font-size: 1.25rem;
+  font-weight: 700;
+  color: #fff;
+  margin-bottom: 1rem;
+}
+
+.projectDesc {
+  font-size: 0.9rem;
+  color: rgba(255, 255, 255, 0.6);
+  line-height: 1.6;
+  margin-bottom: 1.5rem;
+  flex-grow: 1;
+}
+
+.tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+}
+
+.tag {
+  background: rgba(16, 185, 129, 0.1);
+  color: var(--primary-accent);
+  padding: 0.25rem 0.6rem;
+  border-radius: 4px;
+  font-size: 0.75rem;
+  font-weight: 600;
+}

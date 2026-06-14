@@ -1,0 +1,122 @@
+.container {
+  width: 100vw;
+  padding: 4rem 0;
+  background: var(--background);
+  position: relative;
+  z-index: 10;
+  overflow: hidden;
+  border-top: 1px solid rgba(16, 185, 129, 0.1);
+  border-bottom: 1px solid rgba(16, 185, 129, 0.1);
+}
+
+.marqueeWrap {
+  display: flex;
+  overflow: hidden;
+  white-space: nowrap;
+  position: relative;
+}
+
+/* Create a gradient mask for fading edges */
+.marqueeWrap::before,
+.marqueeWrap::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  width: 150px;
+  height: 100%;
+  z-index: 2;
+  pointer-events: none;
+}
+
+.marqueeWrap::before {
+  left: 0;
+  background: linear-gradient(to right, var(--background), transparent);
+}
+
+.marqueeWrap::after {
+  right: 0;
+  background: linear-gradient(to left, var(--background), transparent);
+}
+
+.marqueeTrack {
+  display: flex;
+  width: max-content;
+  animation: marquee 40s linear infinite;
+}
+
+.marqueeTrack span {
+  font-family: 'Outfit', sans-serif;
+  font-size: 2rem;
+  font-weight: 700;
+  color: rgba(255, 255, 255, 0.6);
+  padding: 0 2rem;
+  display: flex;
+  align-items: center;
+  transition: color 0.3s ease;
+}
+
+.marqueeTrack span:hover {
+  color: var(--primary-accent);
+}
+
+.marqueeTrack span::after {
+  content: '✦';
+  margin-left: 4rem;
+  color: var(--secondary-accent);
+  font-size: 1rem;
+}
+
+@keyframes marquee {
+  0% { transform: translateX(0); }
+  100% { transform: translateX(-50%); }
+}
+
+/* Category Grid */
+.categories {
+  max-width: 1200px;
+  margin: 4rem auto 0;
+  padding: 0 2rem;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 2rem;
+}
+
+.category {
+  background: rgba(16, 185, 129, 0.03);
+  border: 1px solid rgba(16, 185, 129, 0.1);
+  border-radius: 16px;
+  padding: 2rem;
+  backdrop-filter: blur(10px);
+  transition: transform 0.3s ease, border-color 0.3s ease;
+}
+
+.category:hover {
+  transform: translateY(-5px);
+  border-color: rgba(16, 185, 129, 0.3);
+}
+
+.catTitle {
+  font-family: 'Outfit', sans-serif;
+  font-size: 1.25rem;
+  font-weight: 700;
+  color: #fff;
+  margin-bottom: 1rem;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+  padding-bottom: 0.5rem;
+}
+
+.tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+}
+
+.tag {
+  background: rgba(255, 255, 255, 0.05);
+  color: rgba(255, 255, 255, 0.8);
+  padding: 0.4rem 0.8rem;
+  border-radius: 20px;
+  font-size: 0.85rem;
+  font-weight: 500;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+}
