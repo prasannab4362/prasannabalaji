@@ -1,12 +1,13 @@
 "use client";
 
-import React from 'react';
+import React, { useState } from 'react';
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
 import styles from './Navbar.module.css';
 
 export default function Navbar() {
   const pathname = usePathname();
+  const [isOpen, setIsOpen] = useState(false);
 
   const navLinks = [
     { name: "Home", path: "/" },
@@ -19,19 +20,44 @@ export default function Navbar() {
 
   return (
     <nav className={styles.navbar}>
-      <Link href="/" className={styles.brand}>
+      <Link href="/" className={styles.brand} onClick={() => setIsOpen(false)}>
         <img src="/logo.jpg" alt="Logo" className={styles.logo} />
         <div className={styles.brandText}>
           <span className={styles.name}>Prasanna B</span>
           <span className={styles.title}>AI and Automation</span>
         </div>
       </Link>
+      
+      {/* Desktop Links */}
       <div className={styles.links}>
         {navLinks.map((link) => (
           <Link 
             key={link.name} 
             href={link.path}
             className={`${styles.link} ${pathname === link.path ? styles.active : ''}`}
+          >
+            {link.name}
+          </Link>
+        ))}
+      </div>
+
+      {/* Mobile Menu Toggler */}
+      <button 
+        className={styles.menuToggle} 
+        onClick={() => setIsOpen(!isOpen)} 
+        aria-label="Toggle Menu"
+      >
+        <span className={`${styles.hamburger} ${isOpen ? styles.open : ''}`}></span>
+      </button>
+
+      {/* Mobile Links Overlay */}
+      <div className={`${styles.mobileLinks} ${isOpen ? styles.mobileLinksOpen : ''}`}>
+        {navLinks.map((link) => (
+          <Link 
+            key={link.name} 
+            href={link.path}
+            className={`${styles.mobileLink} ${pathname === link.path ? styles.activeMobile : ''}`}
+            onClick={() => setIsOpen(false)}
           >
             {link.name}
           </Link>
