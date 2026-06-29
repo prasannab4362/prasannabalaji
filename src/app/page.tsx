@@ -1,9 +1,9 @@
-import VideoIntro from "@/components/VideoIntro/VideoIntro";
+import HeroSection from "@/components/HeroSection/HeroSection";
 
 export default function Home() {
   return (
     <main>
-      <VideoIntro />
+      <HeroSection />
     </main>
   );
 }
