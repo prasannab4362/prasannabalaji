@@ -4,54 +4,82 @@ import React, { useEffect, useRef } from 'react';
 import styles from './ExperienceTimeline.module.css';
 import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
+import { Briefcase, Calendar, MapPin } from 'lucide-react';
 
 gsap.registerPlugin(ScrollTrigger);
 
 const experiences = [
   {
     role: "Python Developer — AI & Agentic AI",
-    company: "Creative Bees · Coimbatore",
+    company: "Creative Bees",
+    location: "Coimbatore",
     date: "Aug 2025 – Present",
     responsibilities: [
-      "Architected and deployed Nami, a production personal agentic AI assistant integrating Gmail and Google Calendar APIs — autonomously summarises emails, schedules meetings, and manages tasks via natural language, reducing daily admin overhead by ~70%.",
-      "Engineered a Stable Diffusion + Qwen image editing pipeline that converts raw car photographs into professional studio-quality images; cut manual retouching time by ~80% and scaled output to 200+ images per day.",
-      "Built an end-to-end AI Video Automation system (Python + FFmpeg) that merges 4–5 raw clips, injects AI generated TTS voiceovers, adds background music, and applies video enhancements — reducing production time from 3–4 hours to under 15 minutes per video.",
-      "Deployed Vision Language Model (VLM) pipelines using Qwen 2.5 VL and FireRedOCR for automated invoice data extraction and business card digitization, achieving 92%+ field-extraction accuracy with JSON output for ERP/CRM integration.",
-      "Designed and deployed WhatsApp AI Agents on the WATI platform — improved intent detection accuracy by 35% through advanced prompt engineering; built webhook-driven automation for multi-turn conversations and escalation logic."
+      "Architected Nami, a production agentic AI assistant integrating Gmail and Calendar APIs to summarize emails, schedule meetings, and manage logs — reducing daily admin overhead by ~70%.",
+      "Engineered an automated Stable Diffusion image editing pipeline for raw automotive photos, reducing retouching cycle times by ~80% and processing 200+ images daily.",
+      "Built a command-line AI Video automation compiler (Python + FFmpeg) merging raw clips with TTS narration and audio tracks in under 15 minutes.",
+      "Deployed Vision Language Model (VLM) pipelines (Qwen 2.5 VL + FireRedOCR) for invoice digitisation, achieving 92%+ field accuracy.",
+      "Designed WhatsApp AI Agents on WATI, boosting customer intent detection accuracy by 35% using structured multi-turn conversation logic."
     ]
   },
   {
     role: "Robotics & AI/ML Engineer",
-    company: "ROBOMATIIC — A Division of CADD Technologies · Coimbatore",
+    company: "ROBOMATIIC (CADD Technologies)",
+    location: "Coimbatore",
     date: "Jun 2023 – Jul 2025",
     responsibilities: [
-      "Led end-to-end delivery of 4+ AI/ML products for EdTech clients — owning requirements, architecture, development, and live demonstrations.",
-      "Delivered a Smart Face-Based Attendance System with real-time CNN-based liveness detection (OpenCV + TensorFlow) — eliminated attendance fraud and automated reporting for 500+ students.",
-      "Architected EduMentor, a GenAI-powered RAG platform for textbook Q&A, chapter summarisation, and auto quiz generation (LangChain + Gemini API + Streamlit).",
-      "Mentored 3 junior engineers on ML engineering best practices, data preprocessing pipelines, model evaluation, and Git-based collaborative workflows."
+      "Delivered 4+ AI/ML EdTech applications, directing specifications, model evaluation, and client demonstrations.",
+      "Built a CNN face attendance register with integrated liveness classification (OpenCV + TensorFlow) to prevent spoofing for 500+ users.",
+      "Architected EduMentor, a GenAI platform using LangChain + Gemini APIs for automated quiz generation and textbook summarisation.",
+      "Mentored junior engineers on Git workflows, data pre-processing, and model evaluation parameters."
     ]
   }
 ];
 
 export default function ExperienceTimeline() {
   const containerRef = useRef<HTMLDivElement>(null);
+  const lineProgressRef = useRef<HTMLDivElement>(null);
+  const itemsRef = useRef<HTMLDivElement[]>([]);
 
   useEffect(() => {
-    const items = gsap.utils.toArray('.' + styles.timelineItem) as HTMLElement[];
-    
-    items.forEach((item) => {
-      gsap.fromTo(item, 
-        { opacity: 0, x: -30 },
-        {
-          opacity: 1,
-          x: 0,
-          duration: 0.8,
-          ease: "power2.out",
-          scrollTrigger: {
-            trigger: item,
-            start: "top 85%",
-          }
+    // 1. Line draw animation on scroll
+    gsap.fromTo(lineProgressRef.current,
+      { height: "0%" },
+      {
+        height: "100%",
+        ease: "none",
+        scrollTrigger: {
+          trigger: `.${styles.timeline}`,
+          start: "top 30%",
+          end: "bottom 70%",
+          scrub: true
         }
+      }
+    );
+
+    // 2. Fade/Slide in each timeline card and activate dot on scroll
+    itemsRef.current.forEach((item, index) => {
+      if (!item) return;
+
+      const card = item.querySelector('.' + styles.timelineCard);
+      const dot = item.querySelector('.' + styles.timelineDot);
+
+      const tl = gsap.timeline({
+        scrollTrigger: {
+          trigger: item,
+          start: "top 75%",
+        }
+      });
+
+      tl.fromTo(dot,
+        { scale: 0, backgroundColor: "rgba(16, 185, 129, 0.1)", borderColor: "rgba(255, 255, 255, 0.1)" },
+        { scale: 1, backgroundColor: "#10b981", borderColor: "#10b981", duration: 0.4, ease: "back.out(1.8)" }
+      );
+
+      tl.fromTo(card,
+        { opacity: 0, x: index % 2 === 0 ? -40 : 40 },
+        { opacity: 1, x: 0, duration: 0.6, ease: "power2.out" },
+        "-=0.25"
       );
     });
   }, []);
@@ -59,22 +87,65 @@ export default function ExperienceTimeline() {
   return (
     <section className={styles.container} id="experience" ref={containerRef}>
       <div className={styles.content}>
-        <h2 className={styles.sectionTitle}>Experience</h2>
+        
+        {/* Header */}
+        <div className={styles.header}>
+          <span className={styles.tagline}>CHRONOLOGY</span>
+          <h2 className={styles.title}>Professional Roadmap</h2>
+          <p className={styles.subtitle}>
+            A journey focused on engineering intelligence, automating high-friction workloads, and training production ML pipelines.
+          </p>
+        </div>
+
+        {/* Timeline Container */}
         <div className={styles.timeline}>
+          {/* Background Track Line */}
+          <div className={styles.timelineLineTrack}></div>
+          
+          {/* Animated Active Line */}
+          <div className={styles.timelineLineProgress} ref={lineProgressRef}></div>
+
           {experiences.map((exp, index) => (
-            <div key={index} className={styles.timelineItem}>
+            <div 
+              key={index} 
+              className={`${styles.timelineItem} ${index % 2 === 0 ? styles.left : styles.right}`}
+              ref={(el) => { if (el) itemsRef.current[index] = el; }}
+            >
+              {/* Central Timeline Node */}
               <div className={styles.timelineDot}></div>
-              <h3 className={styles.role}>{exp.role}</h3>
-              <div className={styles.company}>{exp.company}</div>
-              <div className={styles.date}>{exp.date}</div>
-              <ul className={styles.responsibilities}>
-                {exp.responsibilities.map((task, i) => (
-                  <li key={i}>{task}</li>
-                ))}
-              </ul>
+
+              {/* Responsive Card */}
+              <div className={styles.timelineCard}>
+                <div className={styles.cardHeader}>
+                  <div className={styles.roleInfo}>
+                    <Briefcase size={18} className={styles.roleIcon} />
+                    <h3 className={styles.role}>{exp.role}</h3>
+                  </div>
+                  <div className={styles.metaInfo}>
+                    <span className={styles.companyName}>{exp.company}</span>
+                    <div className={styles.metaRow}>
+                      <span className={styles.metaItem}>
+                        <Calendar size={13} />
+                        {exp.date}
+                      </span>
+                      <span className={styles.metaItem}>
+                        <MapPin size={13} />
+                        {exp.location}
+                      </span>
+                    </div>
+                  </div>
+                </div>
+
+                <ul className={styles.responsibilities}>
+                  {exp.responsibilities.map((task, i) => (
+                    <li key={i}>{task}</li>
+                  ))}
+                </ul>
+              </div>
             </div>
           ))}
         </div>
+
       </div>
     </section>
   );
