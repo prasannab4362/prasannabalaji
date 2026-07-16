@@ -8,31 +8,51 @@ import { ScrollTrigger } from 'gsap/ScrollTrigger';
 gsap.registerPlugin(ScrollTrigger);
 
 const skillsList = [
-  "Next.js", "Python", "Three.js", "LangChain", "RAG Systems", "React", "Docker", "Stable Diffusion",
-  "OpenCV", "TensorFlow", "PyTorch", "TypeScript", "Node.js", "LangGraph", "Ollama", "ESP32 / IoT",
-  "FAISS", "GSAP Animations", "Tailwind CSS", "Gemini API", "AI Agents", "VLM / Multimodal"
+  "Python", "Next.js", "Flutter", "iOS", "Android", "ESP32", "Arduino", "PCB", 
+  "AI Agents", "VLM", "OCR", "Stable Diffusion", "Voice AI", "WhatsApp Bot", 
+  "LangChain", "FAISS", "TensorFlow", "Power BI", "Docker", "R", "SQL", "PyTorch"
 ];
 
 const categories = [
   {
-    title: "AI Engineering & Orchestration",
-    description: "Building autonomous agents and intelligent RAG workflows.",
-    skills: ["AI Agents", "LangChain", "LangGraph", "FAISS", "RAG Systems", "Vector Databases", "Prompt Engineering", "LLM Orchestration"]
+    title: "Programming Languages",
+    description: "Core scripts and structural code execution engines.",
+    skills: ["Python", "SQL", "R", "JavaScript", "TypeScript", "Dart"]
   },
   {
-    title: "Deep Learning & CV",
-    description: "Training, fine-tuning, and running advanced model pipelines.",
-    skills: ["TensorFlow", "PyTorch", "Stable Diffusion", "OpenCV", "VLM / Multimodal", "Qwen VL", "Gemma", "Ollama", "Face Recognition"]
+    title: "Generative & Agentic AI",
+    description: "Retrieval pipelines and automated cognitive agents.",
+    skills: ["LangChain", "Agentic AI", "Gemini API", "Qwen3", "FAISS", "Prompt Eng.", "RAG Systems"]
   },
   {
-    title: "Web Architecture & Creative Dev",
-    description: "Crafting beautiful, high-performance web experiences.",
-    skills: ["Next.js", "React", "Three.js", "Node.js", "TypeScript", "JavaScript", "GSAP Animations", "CSS Modules", "Tailwind CSS", "WebGL"]
+    title: "VLM, OCR, CV & NLP",
+    description: "Image classification and language sequence parsing.",
+    skills: ["OpenCV", "VLM", "FireRedOCR", "Transformers", "Hugging Face", "spaCy"]
   },
   {
-    title: "DevOps & Hardware Integration",
-    description: "Containerizing services and connecting IoT endpoints.",
-    skills: ["Docker", "Git / GitHub", "ESP32 / IoT", "Microcontrollers", "REST APIs", "PostgreSQL", "Linux Systems", "Vercel / CI-CD"]
+    title: "ML & Deep Learning",
+    description: "Training neural topologies and predictive data models.",
+    skills: ["Scikit-learn", "TensorFlow", "PyTorch", "Keras"]
+  },
+  {
+    title: "Data & Visualization",
+    description: "Exploratory statistics and analytical reporting.",
+    skills: ["Pandas", "NumPy", "Matplotlib", "Seaborn", "Power BI"]
+  },
+  {
+    title: "Full Stack & Mobile Development",
+    description: "Interactive cross-platform client view layers.",
+    skills: ["Next.js", "React", "TypeScript", "Flutter", "iOS", "Android", "REST APIs"]
+  },
+  {
+    title: "IoT, Hardware & PCB",
+    description: "Embedded microcontrollers and circuit architecture.",
+    skills: ["Arduino", "Arduino Uno R3", "ESP32", "IoT", "Sensors", "PCB", "Embedded Systems"]
+  },
+  {
+    title: "Dev Tools & Platforms",
+    description: "Work environment automation and containers.",
+    skills: ["Streamlit", "Jupyter", "Docker", "GitHub", "VS Code", "Colab"]
   }
 ];
 
@@ -54,7 +74,7 @@ export default function SkillsMarquee() {
         y: 0,
         rotateX: 0,
         duration: 0.8,
-        stagger: 0.15,
+        stagger: 0.1,
         ease: "power3.out",
         scrollTrigger: {
           trigger: `.${styles.categories}`,
@@ -83,8 +103,8 @@ export default function SkillsMarquee() {
       rotateX: angleX,
       rotateY: angleY,
       scale: 1.03,
-      boxShadow: "0 20px 40px rgba(16, 185, 129, 0.15)",
-      borderColor: "rgba(16, 185, 129, 0.4)",
+      boxShadow: "0 20px 40px rgba(168, 85, 247, 0.15)",
+      borderColor: "rgba(168, 85, 247, 0.4)",
       duration: 0.3,
       ease: "power2.out"
     });
@@ -99,7 +119,7 @@ export default function SkillsMarquee() {
       rotateY: 0,
       scale: 1,
       boxShadow: "0 4px 20px rgba(0, 0, 0, 0.3)",
-      borderColor: "rgba(16, 185, 129, 0.1)",
+      borderColor: "rgba(168, 85, 247, 0.1)",
       duration: 0.5,
       ease: "power3.out"
     });
