@@ -7,8 +7,12 @@ import Footer from "@/components/Footer/Footer";
 import CustomCursor from "@/components/CustomCursor/CustomCursor";
 
 export const metadata: Metadata = {
-  title: "Prasanna B | AI Engineer, Python Developer & Robotics Engineer",
+  title: "Prasanna B | Python Developer, Robotics Engineer, AI ML Engineer & AI ML Developer",
   description: "Portfolio of Prasanna B, AI Engineer, Python Developer, Robotics Engineer, and AI/ML Developer. Specializing in Agentic AI, Computer Vision, RAG, and automation pipelines.",
+  icons: {
+    icon: '/icon.jpg',
+    apple: '/icon.jpg',
+  },
   keywords: [
     "Prasanna B",
     "Prasanna B Python Developer",
