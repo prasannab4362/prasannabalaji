@@ -10,29 +10,30 @@ gsap.registerPlugin(ScrollTrigger);
 
 const experiences = [
   {
-    role: "Python Developer — AI & Agentic AI",
+    role: "Python Developer",
     company: "Creative Bees",
-    location: "Coimbatore",
+    location: "Coimbatore, Tamil Nadu, India",
     date: "Aug 2025 – Present",
     responsibilities: [
-      "Architected Nami, a production agentic AI assistant integrating Gmail and Calendar APIs to summarize emails, schedule meetings, and manage logs — reducing daily admin overhead by ~70%.",
-      "Engineered an automated Stable Diffusion image editing pipeline for raw automotive photos, reducing retouching cycle times by ~80% and processing 200+ images daily.",
-      "Built a command-line AI Video automation compiler (Python + FFmpeg) merging raw clips with TTS narration and audio tracks in under 15 minutes.",
-      "Deployed Vision Language Model (VLM) pipelines (Qwen 2.5 VL + FireRedOCR) for invoice digitisation, achieving 92%+ field accuracy.",
-      "Designed WhatsApp AI Agents on WATI, boosting customer intent detection accuracy by 35% using structured multi-turn conversation logic."
-    ]
+      "Designing, developing, testing, and deploying scalable Python-based applications for business and AI product workflows.",
+      "Building and maintaining RESTful APIs, microservices, and backend integrations that support reliable product features.",
+      "Working on AI-enabled automation ideas including VLM/OCR extraction, CRM-ready workflows, and intelligent assistant features.",
+      "Collaborating across planning, implementation, debugging, and deployment so application features move cleanly from prototype to use."
+    ],
+    tags: ["Python", "REST APIs", "Microservices", "Backend Development", "Next.js", "Flutter", "Agentic AI", "VLM"]
   },
   {
-    role: "Robotics & AI/ML Engineer",
-    company: "ROBOMATIIC (CADD Technologies)",
-    location: "Coimbatore",
-    date: "Jun 2023 – Jul 2025",
+    role: "Robotics Engineer",
+    company: "Robomatic",
+    location: "Coimbatore, Tamil Nadu, India",
+    date: "Jun 2023 – Aug 2025",
     responsibilities: [
-      "Delivered 4+ AI/ML EdTech applications, directing specifications, model evaluation, and client demonstrations.",
-      "Built a CNN face attendance register with integrated liveness classification (OpenCV + TensorFlow) to prevent spoofing for 500+ users.",
-      "Architected EduMentor, a GenAI platform using LangChain + Gemini APIs for automated quiz generation and textbook summarisation.",
-      "Mentored junior engineers on Git workflows, data pre-processing, and model evaluation parameters."
-    ]
+      "Trained 150+ students in software testing, debugging, quality assurance, Python, R, and software development fundamentals.",
+      "Conducted hands-on workshops in Python, R, NLP, TensorFlow, Arduino programming, IoT, and applied AI/ML concepts for student learning programs.",
+      "Supported robotics, embedded systems, and AI learning sessions by translating technical topics into practical demos and classroom-ready workflows.",
+      "Guided learners through project implementation, model experimentation, code debugging, and presentation of working prototypes."
+    ],
+    tags: ["Python", "R", "NLP", "TensorFlow", "Arduino", "ESP32", "Arduino Uno R3", "IoT", "PCB", "Software Testing", "Debugging", "Quality Assurance"]
   }
 ];
 
@@ -141,6 +142,12 @@ export default function ExperienceTimeline() {
                     <li key={i}>{task}</li>
                   ))}
                 </ul>
+
+                <div className={styles.tagsContainer}>
+                  {exp.tags.map((tag, i) => (
+                    <span key={i} className={styles.tag}>{tag}</span>
+                  ))}
+                </div>
               </div>
             </div>
           ))}

@@ -239,3 +239,28 @@
     width: calc(100% - 50px);
   }
 }
+
+.tagsContainer {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  margin-top: 1.5rem;
+  padding-top: 1.25rem;
+  border-top: 1px solid rgba(255, 255, 255, 0.06);
+}
+
+.tag {
+  background: rgba(var(--primary-accent-rgb), 0.06);
+  border: 1px solid rgba(var(--primary-accent-rgb), 0.2);
+  color: var(--primary-accent);
+  font-size: 0.75rem;
+  font-weight: 600;
+  padding: 0.25rem 0.65rem;
+  border-radius: 12px;
+  transition: all 0.3s ease;
+}
+
+.tag:hover {
+  background: var(--primary-accent);
+  color: var(--background);
+}
