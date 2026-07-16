@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useEffect, useRef } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import styles from './HeroSection.module.css';
 import gsap from 'gsap';
 import Link from 'next/link';
@@ -16,6 +16,14 @@ export default function HeroSection() {
   const socialsRef = useRef<HTMLDivElement>(null);
   const scrollRef = useRef<HTMLDivElement>(null);
 
+  const [roleText, setRoleText] = useState("");
+  const [wordIndex, setWordIndex] = useState(0);
+  const [charIndex, setCharIndex] = useState(0);
+  const [isDeleting, setIsDeleting] = useState(false);
+  const [typeSpeed, setTypeSpeed] = useState(100);
+
+  const words = ["Python Developer", "AI & ML Engineer", "VLM Product Builder", "Agentic AI Builder", "GenAI Engineer"];
+
   useEffect(() => {
     // GSAP Timeline for elegant text reveal
     const tl = gsap.timeline();
@@ -28,6 +36,35 @@ export default function HeroSection() {
       .to(socialsRef.current, { opacity: 1, x: 0, duration: 0.8, ease: "power2.out" }, "-=0.6")
       .to(scrollRef.current, { opacity: 1, y: 0, duration: 0.8, ease: "power2.out" }, "-=0.4");
   }, []);
+
+  useEffect(() => {
+    const handleType = () => {
+      const currentWord = words[wordIndex];
+      if (!isDeleting) {
+        setRoleText(currentWord.substring(0, charIndex + 1));
+        setCharIndex(prev => prev + 1);
+        setTypeSpeed(100);
+
+        if (charIndex + 1 === currentWord.length) {
+          setTypeSpeed(1500); // pause at the end
+          setIsDeleting(true);
+        }
+      } else {
+        setRoleText(currentWord.substring(0, charIndex - 1));
+        setCharIndex(prev => prev - 1);
+        setTypeSpeed(50);
+
+        if (charIndex - 1 === 0) {
+          setIsDeleting(false);
+          setWordIndex(prev => (prev + 1) % words.length);
+          setTypeSpeed(500); // pause before next word
+        }
+      }
+    };
+
+    const timer = setTimeout(handleType, typeSpeed);
+    return () => clearTimeout(timer);
+  }, [charIndex, isDeleting, wordIndex, typeSpeed]);
 
   return (
     <section className={styles.container} ref={containerRef}>
@@ -42,7 +79,7 @@ export default function HeroSection() {
       <div className={styles.overlay}>
         <div className={styles.heroCard}>
           <div className={styles.tagline} ref={taglineRef}>
-            AI ENGINEER & AUTOMATION ARCHITECT
+            <span className={styles.pulseDot}></span> Available for Work
           </div>
           
           <h1 className={styles.name}>
@@ -50,18 +87,22 @@ export default function HeroSection() {
             <span ref={lastNameRef} className={styles.lastName}>BALAJI</span>
           </h1>
 
+          <div className={styles.typewriterContainer}>
+            <span className={styles.typewriterText}>{roleText}</span>
+            <span className={styles.typewriterCursor}></span>
+          </div>
+
           <p className={styles.subtitle} ref={subtitleRef}>
-            I orchestrate autonomous AI agents, deploy secure, multi-modal LLM pipelines, 
-            and engineer end-to-end automation engines that turn cognitive capabilities 
-            into production assets.
+            Python Developer at Creative Bees with prior Robotics Engineer experience at Robomatic, 
+            building full-stack, mobile, IoT, VLM/OCR, Agentic AI, and production-ready Python workflows.
           </p>
 
           <div className={styles.ctaGroup} ref={buttonsRef}>
-            <Link href="/about" className={styles.primaryBtn}>
-              Read My Story <span className={styles.arrow}>→</span>
+            <Link href="/projects" className={styles.primaryBtn}>
+              Explore My Work <span className={styles.arrow}>→</span>
             </Link>
             <Link href="/contact" className={styles.secondaryBtn}>
-              Let's Collaborate
+              Get in Touch
             </Link>
           </div>
         </div>
