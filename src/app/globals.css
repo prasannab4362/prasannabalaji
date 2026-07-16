@@ -1,10 +1,16 @@
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Outfit:wght@300;400;500;600;700;800&display=swap');
 
 :root {
-  --background: #050a08; /* Very dark green/black */
-  --foreground: #ffffff;
-  --primary-accent: #10b981; /* Emerald green */
-  --secondary-accent: #34d399; /* Light green */
+  --background: #0a0616; /* Deep obsidian violet */
+  --background-rgb: 10, 6, 22;
+  --foreground: #f7f5f0; /* Creamy off-white (Beige-leaning) */
+  --primary-accent: #a855f7; /* Vibrant royal purple */
+  --primary-accent-rgb: 168, 85, 247;
+  --secondary-accent: #dfd7ca; /* Warm sand beige */
+  --secondary-accent-rgb: 223, 215, 202;
+  --beige-light: #f5f2eb;
+  --beige-muted: #c0b9a8;
+  --purple-glow: #c084fc;
 }
 
 html,
