@@ -3,18 +3,56 @@ import Script from "next/script";
 import "./globals.css";
 
 import Navbar from "@/components/Navbar/Navbar";
-
 import Footer from "@/components/Footer/Footer";
 import CustomCursor from "@/components/CustomCursor/CustomCursor";
 
 export const metadata: Metadata = {
-  title: "Prasanna B | AI and Automation",
-  description: "Portfolio of Prasanna B, AI Engineer specializing in Agentic AI, Generative AI workflows, LLM orchestration, Computer Vision, and end-to-end Automation.",
-  keywords: ["AI Engineer", "Automation Engineer", "Python Developer", "Agentic AI", "LLM", "Generative AI", "Computer Vision", "Prasanna B", "Coimbatore"],
+  title: "Prasanna B | AI Engineer, Python Developer & Robotics Engineer",
+  description: "Portfolio of Prasanna B, AI Engineer, Python Developer, Robotics Engineer, and AI/ML Developer. Specializing in Agentic AI, Computer Vision, RAG, and automation pipelines.",
+  keywords: [
+    "Prasanna B",
+    "Prasanna B Python Developer",
+    "Prasanna B Robotics Engineer",
+    "Prasanna B AI ML Engineer",
+    "Prasanna B AI ML Developer",
+    "AI Engineer Coimbatore",
+    "Robotics Engineer Coimbatore",
+    "Python AI Developer",
+    "Agentic AI Portfolio",
+    "Prasanna Balaji"
+  ],
+  alternates: {
+    canonical: "https://prasannab.in"
+  },
+  robots: {
+    index: true,
+    follow: true,
+    googleBot: {
+      index: true,
+      follow: true,
+      'max-video-preview': -1,
+      'max-image-preview': 'large',
+      'max-snippet': -1,
+    },
+  },
   openGraph: {
-    title: "Prasanna B | AI and Automation",
+    title: "Prasanna B | AI Engineer, Python Developer & Robotics Engineer",
     description: "Building intelligent AI products, Agentic workflows, and end-to-end ML platforms.",
-    type: "website",
+    url: "https://prasannab.in",
+    siteName: "Prasanna B Portfolio",
+    locale: "en_US",
+    type: "profile",
+    firstName: "Prasanna",
+    lastName: "Balaji",
+    username: "prasannab4362",
+    images: [
+      {
+        url: "https://prasannab.in/logo.jpg",
+        width: 800,
+        height: 800,
+        alt: "Prasanna B Logo",
+      }
+    ],
   }
 };
 
@@ -23,8 +61,48 @@ export default function RootLayout({
 }: Readonly<{
   children: React.ReactNode;
 }>) {
+  const jsonLd = {
+    "@context": "https://schema.org",
+    "@type": "Person",
+    "name": "Prasanna Balaji",
+    "alternateName": "Prasanna B",
+    "url": "https://prasannab.in",
+    "image": "https://prasannab.in/logo.jpg",
+    "sameAs": [
+      "https://github.com/prasannab4362",
+      "https://in.linkedin.com/in/prasannabalaji18"
+    ],
+    "jobTitle": "AI Engineer & Python Developer & Robotics Engineer",
+    "worksFor": {
+      "@type": "Organization",
+      "name": "Creative Bees"
+    },
+    "description": "Prasanna B is an AI Engineer, Python Developer, Robotics Engineer, and AI/ML Developer specializing in Agentic workflows, computer vision, LangChain, RAG, and automation pipelines.",
+    "address": {
+      "@type": "PostalAddress",
+      "addressLocality": "Coimbatore",
+      "addressRegion": "Tamil Nadu",
+      "addressCountry": "India"
+    },
+    "knowsAbout": [
+      "Artificial Intelligence",
+      "Machine Learning",
+      "Agentic AI",
+      "Robotics",
+      "Computer Vision",
+      "Python Development",
+      "Web Automation"
+    ]
+  };
+
   return (
     <html lang="en">
+      <head>
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+        />
+      </head>
       <body>
         <CustomCursor />
         <Navbar />
