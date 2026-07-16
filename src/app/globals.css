@@ -54,3 +54,20 @@ a {
 ::-webkit-scrollbar-thumb:hover {
   background: #555; 
 }
+
+/* Scroll Snapping Presentation */
+.scroll-container {
+  height: 100vh;
+  overflow-y: scroll;
+  scroll-snap-type: y mandatory;
+  scroll-behavior: smooth;
+}
+
+.scroll-section {
+  width: 100vw;
+  height: 100vh;
+  scroll-snap-align: start;
+  scroll-snap-stop: always;
+  overflow-y: auto;
+  position: relative;
+}
