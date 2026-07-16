@@ -1,75 +1,150 @@
 "use client";
 
-import React, { useEffect, useRef } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import styles from './FeaturedProjects.module.css';
 import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
-import { Bot, Image as ImageIcon, Video, FileText, MessageSquare, Scale, ArrowUpRight } from 'lucide-react';
+import { 
+  Bot, Image as ImageIcon, FileText, MessageSquare, Scale, 
+  BookOpen, LineChart, TrendingUp, Briefcase, Award, ArrowUpRight, Mic, PhoneCall 
+} from 'lucide-react';
 
 gsap.registerPlugin(ScrollTrigger);
 
 const projects = [
   {
-    title: "Nami Agentic AI Assistant",
-    desc: "Autonomous personal orchestrator reading/replying to emails and scheduling calendars via natural language commands, resolving daily scheduling latency.",
-    tags: ["Python", "Gmail API", "Google Calendar", "LLMs", "Tool-Call"],
-    icon: <Bot size={32} />
+    title: "Nami Agent - Calendar Bot & Dev AI Agent",
+    desc: "An agentic AI assistant for calendar workflows and development support, designed as a testable foundation for user-facing automation.",
+    tags: ["Python", "AI Agents", "Automation", "Workflow"],
+    categories: ["agentic-ai", "genai"],
+    icon: <Bot size={28} />,
+    link: "https://github.com/prasannab4362/Nami_agent"
   },
   {
-    title: "Car Studio AI Pipeline",
-    desc: "Background segmentation, lighting matching, and studio retouching for vehicle photography. Cut processing latency by ~80% for 200+ images/day.",
-    tags: ["Stable Diffusion", "Qwen Image", "Python", "ComfyUI"],
-    icon: <ImageIcon size={32} />
+    title: "Buzz Card - VLM Visiting Card Reader",
+    desc: "A mobile-first vision-language workflow for reading visiting cards, extracting contact data, and turning physical cards into CRM-ready records.",
+    tags: ["VLM", "OCR", "Qwen3", "FireRedOCR", "Mobile AI"],
+    categories: ["vlm", "computer-vision", "genai"],
+    icon: <FileText size={28} />,
+    link: "https://github.com/prasannab4362"
   },
   {
-    title: "AI Video Automation System",
-    desc: "End-to-end Python script that merges clips, applies audio overlays, overlays AI-generated TTS scripts, and reduces turnaround time under 15 minutes.",
-    tags: ["Python", "FFmpeg", "TTS", "Open-source LLMs"],
-    icon: <Video size={32} />
+    title: "Stable Diffusion Car Image Studio",
+    desc: "Image editing pipeline for automotive use cases: change car colors, clean messy photos, and generate studio-level vehicle presentation images.",
+    tags: ["Stable Diffusion", "ControlNet", "YOLOv8", "OpenCV", "Python"],
+    categories: ["image-ai", "genai", "computer-vision"],
+    icon: <ImageIcon size={28} />,
+    link: "https://github.com/prasannab4362/Car_front_Side_Detection"
   },
   {
-    title: "VLM Invoice & Card Reader",
-    desc: "Vision Language Model pipeline extracting structured details from invoices and business cards at 92%+ accuracy, outputting clean JSON payload.",
-    tags: ["Qwen 2.5 VL", "FireRedOCR", "Python", "ERP Integration"],
-    icon: <FileText size={32} />
+    title: "Voice Cloning & Speech Synthesis",
+    desc: "A voice AI workflow focused on speaker cloning, clean dataset preparation, and natural speech generation for product demos and assistants.",
+    tags: ["TTS", "Voice Cloning", "Python", "Audio ML"],
+    categories: ["voice-ai", "genai"],
+    icon: <Mic size={28} />,
+    link: "https://github.com/prasannab4362"
   },
   {
-    title: "WhatsApp Conversational Agent",
-    desc: "Multi-turn conversational bot on WATI with integrated escalation routing, webhook synchronization, and +35% intent detection accuracy.",
-    tags: ["WATI", "Webhooks", "Prompt Engineering", "NLP"],
-    icon: <MessageSquare size={32} />
+    title: "WhatsApp Bot CRM Automation",
+    desc: "A conversational CRM workflow for capturing leads, answering first-level queries, updating customer records, and escalating qualified requests.",
+    tags: ["WhatsApp API", "CRM", "Python", "Agentic AI"],
+    categories: ["crm", "agentic-ai", "genai"],
+    icon: <PhoneCall size={28} />,
+    link: "https://github.com/prasannab4362"
   },
   {
-    title: "AI IPC Legal Assistant",
-    desc: "Domain-specific RAG grounded in Indian Constitution and IPC code references, outputting strict source citations with zero hallucination.",
-    tags: ["Gemini Flash", "LangChain", "FAISS", "Streamlit"],
-    icon: <Scale size={32} />
+    title: "Face Attendance with Anti-Spoofing",
+    desc: "A production-grade real-time attendance system that leverages face recognition combined with CNN-based liveness detection to completely prevent spoof attacks.",
+    tags: ["OpenCV", "TensorFlow", "CNN", "Streamlit", "Python"],
+    categories: ["computer-vision", "ml"],
+    icon: <Award size={28} />,
+    link: "https://github.com/prasannab4362/Real_Time_Face_Anti-spoofing_Detection"
+  },
+  {
+    title: "AI Legal Assistant (LLM + RAG)",
+    desc: "An intelligent legal chatbot that answers complex IPC (Indian Penal Code) and Constitution of India queries with source-level document retrieval powered by RAG architecture.",
+    tags: ["Gemini 1.5 Flash", "LangChain", "FAISS", "RAG", "Streamlit"],
+    categories: ["genai", "nlp", "ml"],
+    icon: <Scale size={28} />,
+    link: "https://github.com/prasannab4362"
+  },
+  {
+    title: "EduPDF Chatbot - Ask Your Lesson",
+    desc: "A GenAI-powered personalized learning assistant that enables students to query textbooks, generate summaries, and create custom quizzes from uploaded PDF study materials.",
+    tags: ["LangChain", "Gemini API", "Streamlit", "FAISS", "Python"],
+    categories: ["genai", "nlp"],
+    icon: <BookOpen size={28} />,
+    link: "https://github.com/prasannab4362/EduPDF-Chatbot-Ask-Your-Lesson"
+  },
+  {
+    title: "Housing Price Prediction ML Pipeline",
+    desc: "A complete end-to-end ML regression pipeline to predict housing prices with advanced feature engineering, PCA-based dimensionality reduction, and thorough model comparison.",
+    tags: ["Scikit-learn", "Pandas", "PCA", "Matplotlib", "Python"],
+    categories: ["ml", "data-science"],
+    icon: <LineChart size={28} />,
+    link: "https://github.com/prasannab4362"
+  },
+  {
+    title: "Stock Analysis Application",
+    desc: "A data-driven stock analysis application with web scraping from Screener.in, ML-based pattern analysis, and interactive dashboards to enhance investor decision-making.",
+    tags: ["Python", "Django", "Scikit-learn", "BeautifulSoup"],
+    categories: ["ml", "data-science"],
+    icon: <TrendingUp size={28} />,
+    link: "https://github.com/prasannab4362"
+  },
+  {
+    title: "Job Placement Prediction (R)",
+    desc: "An R-based data science project using Naive Bayes classification to predict student job placement outcomes from academic and extracurricular features with 85% accuracy.",
+    tags: ["R", "Naive Bayes", "ggplot2", "R Studio"],
+    categories: ["ml", "data-science"],
+    icon: <Briefcase size={28} />,
+    link: "https://github.com/prasannab4362"
   }
+];
+
+const filters = [
+  { id: "all", name: "All Projects" },
+  { id: "agentic-ai", name: "Agentic AI" },
+  { id: "vlm", name: "VLM" },
+  { id: "image-ai", name: "Image AI" },
+  { id: "voice-ai", name: "Voice AI" },
+  { id: "crm", name: "CRM Bots" },
+  { id: "computer-vision", name: "Computer Vision" },
+  { id: "genai", name: "Generative AI" },
+  { id: "nlp", name: "NLP" },
+  { id: "ml", name: "Machine Learning" }
 ];
 
 export default function FeaturedProjects() {
   const containerRef = useRef<HTMLDivElement>(null);
   const gridRef = useRef<HTMLDivElement>(null);
+  const [activeFilter, setActiveFilter] = useState("all");
+
+  const filteredProjects = activeFilter === "all" 
+    ? projects 
+    : projects.filter(p => p.categories.includes(activeFilter));
 
   useEffect(() => {
+    // ScrollTrigger initial animations
     const cards = gsap.utils.toArray('.' + styles.projectCard) as HTMLElement[];
-    
-    gsap.fromTo(cards, 
-      { opacity: 0, y: 50, scale: 0.95 },
-      {
-        opacity: 1,
-        y: 0,
-        scale: 1,
-        duration: 0.8,
-        stagger: 0.15,
-        ease: "power3.out",
-        scrollTrigger: {
-          trigger: gridRef.current,
-          start: "top 80%",
+    if (cards.length > 0) {
+      gsap.fromTo(cards, 
+        { opacity: 0, y: 30, scale: 0.98 },
+        {
+          opacity: 1,
+          y: 0,
+          scale: 1,
+          duration: 0.6,
+          stagger: 0.1,
+          ease: "power2.out",
+          scrollTrigger: {
+            trigger: gridRef.current,
+            start: "top 85%",
+          }
         }
-      }
-    );
-  }, []);
+      );
+    }
+  }, [activeFilter]);
 
   return (
     <section className={styles.container} id="featured-projects" ref={containerRef}>
@@ -78,16 +153,35 @@ export default function FeaturedProjects() {
         {/* Header */}
         <div className={styles.header}>
           <span className={styles.tagline}>PORTFOLIO</span>
-          <h2 className={styles.title}>Production-Grade Artifacts</h2>
+          <h2 className={styles.title}>Featured AI & ML Projects</h2>
           <p className={styles.subtitle}>
-            Deploying cognitive models, automated processing loops, and domain-specific agents to solve actual business hurdles.
+            A showcase of production-ready AI products across agentic assistants, vision models, document intelligence, and data analytics.
           </p>
+        </div>
+
+        {/* Filter Bar */}
+        <div className={styles.filterBar}>
+          {filters.map((filter) => (
+            <button
+              key={filter.id}
+              className={`${styles.filterBtn} ${activeFilter === filter.id ? styles.activeFilter : ''}`}
+              onClick={() => setActiveFilter(filter.id)}
+            >
+              {filter.name}
+            </button>
+          ))}
         </div>
 
         {/* Grid */}
         <div className={styles.grid} ref={gridRef}>
-          {projects.map((proj, idx) => (
-            <div key={idx} className={styles.projectCard}>
+          {filteredProjects.map((proj, idx) => (
+            <a 
+              key={idx} 
+              href={proj.link} 
+              target="_blank" 
+              rel="noopener noreferrer" 
+              className={styles.projectCard}
+            >
               <div className={styles.cardHeader}>
                 <div className={styles.iconBox}>
                   {proj.icon}
@@ -109,7 +203,7 @@ export default function FeaturedProjects() {
                   ))}
                 </div>
               </div>
-            </div>
+            </a>
           ))}
         </div>
 

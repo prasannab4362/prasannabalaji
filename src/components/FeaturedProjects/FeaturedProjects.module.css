@@ -69,6 +69,7 @@
   transition: all 0.4s cubic-bezier(0.25, 0.8, 0.25, 1);
   cursor: pointer;
   opacity: 0; /* Animated via GSAP */
+  text-decoration: none;
 }
 
 .projectCard:hover {
@@ -164,10 +165,50 @@
   color: var(--primary-accent);
 }
 
+/* Filter Bar Styles */
+.filterBar {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+  justify-content: center;
+  margin-bottom: 3.5rem;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+  padding-bottom: 1.5rem;
+}
+
+.filterBtn {
+  background: rgba(255, 255, 255, 0.02);
+  border: 1px solid rgba(255, 255, 255, 0.05);
+  color: rgba(255, 255, 255, 0.65);
+  padding: 0.65rem 1.35rem;
+  border-radius: 20px;
+  font-size: 0.82rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.filterBtn:hover {
+  background: rgba(255, 255, 255, 0.05);
+  color: #ffffff;
+  border-color: rgba(var(--primary-accent-rgb), 0.2);
+}
+
+.activeFilter {
+  background: rgba(var(--primary-accent-rgb), 0.08);
+  border-color: var(--primary-accent);
+  color: var(--primary-accent);
+  text-shadow: 0 0 8px rgba(var(--primary-accent-rgb), 0.2);
+}
+
 /* Adjustments for smaller viewports */
 @media (max-width: 480px) {
   .projectCard {
     padding: 1.5rem;
     min-height: auto;
+  }
+  .filterBtn {
+    width: 100%;
+    text-align: center;
   }
 }
