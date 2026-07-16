@@ -84,7 +84,7 @@ export default function HeroSection() {
           
           <h1 className={styles.name}>
             <span ref={firstNameRef} className={styles.firstName}>PRASANNA</span>
-            <span ref={lastNameRef} className={styles.lastName}>BALAJI</span>
+            <span ref={lastNameRef} className={styles.lastName}>B</span>
           </h1>
 
           <div className={styles.typewriterContainer}>

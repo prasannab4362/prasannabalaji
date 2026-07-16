@@ -19,7 +19,7 @@ export const metadata: Metadata = {
     "Robotics Engineer Coimbatore",
     "Python AI Developer",
     "Agentic AI Portfolio",
-    "Prasanna Balaji"
+    "Prasanna B"
   ],
   alternates: {
     canonical: "https://prasannab.in"
@@ -43,7 +43,7 @@ export const metadata: Metadata = {
     locale: "en_US",
     type: "profile",
     firstName: "Prasanna",
-    lastName: "Balaji",
+    lastName: "B",
     username: "prasannab4362",
     images: [
       {
@@ -64,13 +64,13 @@ export default function RootLayout({
   const jsonLd = {
     "@context": "https://schema.org",
     "@type": "Person",
-    "name": "Prasanna Balaji",
-    "alternateName": "Prasanna B",
+    "name": "Prasanna B",
+    "alternateName": "Prasanna Balaji",
     "url": "https://prasannab.in",
     "image": "https://prasannab.in/logo.jpg",
     "sameAs": [
       "https://github.com/prasannab4362",
-      "https://in.linkedin.com/in/prasannabalaji18"
+      "https://www.linkedin.com/in/prasanna-balaji18/"
     ],
     "jobTitle": "AI Engineer & Python Developer & Robotics Engineer",
     "worksFor": {
