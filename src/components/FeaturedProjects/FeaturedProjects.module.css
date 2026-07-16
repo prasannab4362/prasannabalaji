@@ -56,9 +56,9 @@
 }
 
 .projectCard {
-  background: rgba(5, 10, 8, 0.55);
+  background: rgba(var(--background-rgb), 0.55);
   backdrop-filter: blur(12px);
-  border: 1px solid rgba(16, 185, 129, 0.08);
+  border: 1px solid rgba(var(--primary-accent-rgb), 0.08);
   border-radius: 24px;
   padding: 2.2rem;
   display: flex;
@@ -73,8 +73,8 @@
 
 .projectCard:hover {
   transform: translateY(-6px);
-  border-color: rgba(16, 185, 129, 0.3);
-  box-shadow: 0 20px 40px -15px rgba(16, 185, 129, 0.18);
+  border-color: rgba(var(--primary-accent-rgb), 0.3);
+  box-shadow: 0 20px 40px -15px rgba(var(--primary-accent-rgb), 0.18);
 }
 
 /* Card Header */
@@ -89,8 +89,8 @@
   width: 58px;
   height: 58px;
   border-radius: 16px;
-  background: rgba(16, 185, 129, 0.06);
-  border: 1px solid rgba(16, 185, 129, 0.15);
+  background: rgba(var(--primary-accent-rgb), 0.06);
+  border: 1px solid rgba(var(--primary-accent-rgb), 0.15);
   color: var(--primary-accent);
   display: flex;
   align-items: center;
@@ -100,9 +100,9 @@
 
 .projectCard:hover .iconBox {
   background: var(--primary-accent);
-  color: #050a08;
+  color: var(--background);
   transform: scale(1.05);
-  box-shadow: 0 0 20px rgba(16, 185, 129, 0.3);
+  box-shadow: 0 0 20px rgba(var(--primary-accent-rgb), 0.3);
 }
 
 .cardArrow {
@@ -154,12 +154,12 @@
 }
 
 .projectCard:hover .tag {
-  border-color: rgba(16, 185, 129, 0.15);
+  border-color: rgba(var(--primary-accent-rgb), 0.15);
   color: rgba(255, 255, 255, 0.75);
 }
 
 .tag:hover {
-  background: rgba(16, 185, 129, 0.08);
+  background: rgba(var(--primary-accent-rgb), 0.08);
   border-color: var(--primary-accent);
   color: var(--primary-accent);
 }

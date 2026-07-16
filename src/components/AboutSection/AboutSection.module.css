@@ -62,8 +62,8 @@
 }
 
 .statCard {
-  background: rgba(16, 185, 129, 0.02);
-  border: 1px solid rgba(16, 185, 129, 0.1);
+  background: rgba(var(--primary-accent-rgb), 0.02);
+  border: 1px solid rgba(var(--primary-accent-rgb), 0.1);
   border-radius: 16px;
   padding: 1.8rem;
   text-align: center;
@@ -73,8 +73,8 @@
 
 .statCard:hover {
   transform: translateY(-4px);
-  border-color: rgba(16, 185, 129, 0.25);
-  box-shadow: 0 15px 30px -10px rgba(16, 185, 129, 0.15);
+  border-color: rgba(var(--primary-accent-rgb), 0.25);
+  box-shadow: 0 15px 30px -10px rgba(var(--primary-accent-rgb), 0.15);
 }
 
 .statValue {
@@ -152,14 +152,14 @@
 .tabBtn:hover {
   background: rgba(255, 255, 255, 0.05);
   color: #ffffff;
-  border-color: rgba(16, 185, 129, 0.2);
+  border-color: rgba(var(--primary-accent-rgb), 0.2);
 }
 
 .activeTab {
-  background: rgba(16, 185, 129, 0.08);
+  background: rgba(var(--primary-accent-rgb), 0.08);
   border-color: var(--primary-accent);
   color: var(--primary-accent);
-  text-shadow: 0 0 10px rgba(16, 185, 129, 0.2);
+  text-shadow: 0 0 10px rgba(var(--primary-accent-rgb), 0.2);
 }
 
 /* Comparison Layout */
@@ -188,8 +188,8 @@
 }
 
 .comparisonCardAutomated {
-  background: rgba(16, 185, 129, 0.02);
-  border: 1px solid rgba(16, 185, 129, 0.12);
+  background: rgba(var(--primary-accent-rgb), 0.02);
+  border: 1px solid rgba(var(--primary-accent-rgb), 0.12);
   border-radius: 20px;
   padding: 2rem;
   position: relative;
@@ -197,13 +197,13 @@
   display: flex;
   flex-direction: column;
   justify-content: center;
-  box-shadow: 0 0 30px rgba(16, 185, 129, 0.03);
+  box-shadow: 0 0 30px rgba(var(--primary-accent-rgb), 0.03);
   transition: all 0.3s ease;
 }
 
 .comparisonCardAutomated:hover {
-  border-color: rgba(16, 185, 129, 0.3);
-  box-shadow: 0 0 40px rgba(16, 185, 129, 0.08);
+  border-color: rgba(var(--primary-accent-rgb), 0.3);
+  box-shadow: 0 0 40px rgba(var(--primary-accent-rgb), 0.08);
 }
 
 .cardTagManual {
@@ -226,9 +226,9 @@
   position: absolute;
   top: -12px;
   left: 20px;
-  background: #09251b;
+  background: #1c0d35;
   color: var(--secondary-accent);
-  border: 1px solid rgba(16, 185, 129, 0.3);
+  border: 1px solid rgba(var(--primary-accent-rgb), 0.3);
   padding: 0.25rem 0.75rem;
   border-radius: 20px;
   font-size: 0.75rem;
@@ -236,7 +236,7 @@
   display: flex;
   align-items: center;
   gap: 0.4rem;
-  box-shadow: 0 0 10px rgba(16, 185, 129, 0.15);
+  box-shadow: 0 0 10px rgba(var(--primary-accent-rgb), 0.15);
 }
 
 .cardHeader {

@@ -9,9 +9,9 @@
   justify-content: space-between;
   padding: 0 4rem;
   z-index: 100;
-  background: rgba(5, 10, 8, 0.7);
+  background: rgba(var(--background-rgb), 0.7);
   backdrop-filter: blur(12px);
-  border-bottom: 1px solid rgba(16, 185, 129, 0.1);
+  border-bottom: 1px solid rgba(var(--primary-accent-rgb), 0.1);
 }
 
 .brand {
@@ -146,7 +146,7 @@
   left: 0;
   width: 100vw;
   height: 100vh;
-  background: rgba(5, 10, 8, 0.98);
+  background: rgba(var(--background-rgb), 0.98);
   backdrop-filter: blur(16px);
   z-index: 99;
   display: flex;
@@ -175,7 +175,7 @@
 
 .mobileLink:hover, .activeMobile {
   color: var(--primary-accent);
-  text-shadow: 0 0 10px rgba(16, 185, 129, 0.3);
+  text-shadow: 0 0 10px rgba(var(--primary-accent-rgb), 0.3);
 }
 
 @media (max-width: 768px) {

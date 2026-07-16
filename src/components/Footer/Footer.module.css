@@ -1,8 +1,8 @@
 .footer {
   width: 100vw;
   padding: 4rem 2rem 2rem 2rem;
-  background: linear-gradient(to bottom, transparent, rgba(5, 10, 8, 0.95));
-  border-top: 1px solid rgba(16, 185, 129, 0.1);
+  background: linear-gradient(to bottom, transparent, rgba(var(--background-rgb), 0.95));
+  border-top: 1px solid rgba(var(--primary-accent-rgb), 0.1);
   position: relative;
   z-index: 50;
   display: flex;
@@ -53,14 +53,14 @@
 }
 
 .contactCard:hover {
-  background: rgba(16, 185, 129, 0.05);
-  border-color: rgba(16, 185, 129, 0.4);
+  background: rgba(var(--primary-accent-rgb), 0.05);
+  border-color: rgba(var(--primary-accent-rgb), 0.4);
   transform: translateY(-5px);
 }
 
 .iconWrapper {
   color: var(--primary-accent);
-  background: rgba(16, 185, 129, 0.1);
+  background: rgba(var(--primary-accent-rgb), 0.1);
   padding: 0.75rem;
   border-radius: 50%;
   display: flex;

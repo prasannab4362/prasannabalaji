@@ -72,8 +72,8 @@ export default function ExperienceTimeline() {
       });
 
       tl.fromTo(dot,
-        { scale: 0, backgroundColor: "rgba(16, 185, 129, 0.1)", borderColor: "rgba(255, 255, 255, 0.1)" },
-        { scale: 1, backgroundColor: "#10b981", borderColor: "#10b981", duration: 0.4, ease: "back.out(1.8)" }
+        { scale: 0, backgroundColor: "rgba(168, 85, 247, 0.1)", borderColor: "rgba(255, 255, 255, 0.1)" },
+        { scale: 1, backgroundColor: "#a855f7", borderColor: "#a855f7", duration: 0.4, ease: "back.out(1.8)" }
       );
 
       tl.fromTo(card,

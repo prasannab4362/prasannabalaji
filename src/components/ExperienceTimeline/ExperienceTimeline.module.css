@@ -73,7 +73,7 @@
   background: linear-gradient(to bottom, var(--primary-accent), var(--secondary-accent));
   transform: translateX(-50%);
   z-index: 1;
-  box-shadow: 0 0 15px rgba(16, 185, 129, 0.5);
+  box-shadow: 0 0 15px rgba(var(--primary-accent-rgb), 0.5);
 }
 
 .timelineItem {
@@ -94,7 +94,7 @@
   width: 16px;
   height: 16px;
   border-radius: 50%;
-  background: #050a08;
+  background: var(--background);
   border: 3px solid rgba(255, 255, 255, 0.1);
   transform: translateX(-50%);
   z-index: 2;
@@ -103,9 +103,9 @@
 
 .timelineCard {
   width: 45%;
-  background: rgba(5, 10, 8, 0.55);
+  background: rgba(var(--background-rgb), 0.55);
   backdrop-filter: blur(12px);
-  border: 1px solid rgba(16, 185, 129, 0.1);
+  border: 1px solid rgba(var(--primary-accent-rgb), 0.1);
   border-radius: 20px;
   padding: 2.2rem;
   box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
@@ -115,8 +115,8 @@
 }
 
 .timelineCard:hover {
-  border-color: rgba(16, 185, 129, 0.25);
-  box-shadow: 0 15px 30px -10px rgba(16, 185, 129, 0.15);
+  border-color: rgba(var(--primary-accent-rgb), 0.25);
+  box-shadow: 0 15px 30px -10px rgba(var(--primary-accent-rgb), 0.15);
 }
 
 /* Alternate side positioning for cards */

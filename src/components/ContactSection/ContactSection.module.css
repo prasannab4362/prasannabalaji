@@ -78,25 +78,25 @@
   display: flex;
   gap: 1.5rem;
   padding: 1.8rem;
-  background: rgba(16, 185, 129, 0.03);
-  border: 1px solid rgba(16, 185, 129, 0.1);
+  background: rgba(var(--primary-accent-rgb), 0.03);
+  border: 1px solid rgba(var(--primary-accent-rgb), 0.1);
   border-radius: 16px;
   transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
   cursor: pointer;
 }
 
 .card:hover {
-  background: rgba(16, 185, 129, 0.06);
-  border-color: rgba(16, 185, 129, 0.25);
+  background: rgba(var(--primary-accent-rgb), 0.06);
+  border-color: rgba(var(--primary-accent-rgb), 0.25);
   transform: translateY(-4px);
-  box-shadow: 0 10px 30px -10px rgba(16, 185, 129, 0.15);
+  box-shadow: 0 10px 30px -10px rgba(var(--primary-accent-rgb), 0.15);
 }
 
 .iconWrapper {
   width: 54px;
   height: 54px;
   border-radius: 12px;
-  background: rgba(16, 185, 129, 0.1);
+  background: rgba(var(--primary-accent-rgb), 0.1);
   color: var(--primary-accent);
   display: flex;
   align-items: center;
@@ -107,7 +107,7 @@
 
 .card:hover .iconWrapper {
   background: var(--primary-accent);
-  color: #000;
+  color: var(--background);
   transform: scale(1.05);
 }
 
@@ -185,7 +185,7 @@
   align-items: center;
   gap: 0.6rem;
   padding: 0.5rem 1rem;
-  background: rgba(16, 185, 129, 0.08);
+  background: rgba(var(--primary-accent-rgb), 0.08);
   border-radius: 100px;
   font-size: 0.85rem;
   font-weight: 600;
@@ -198,22 +198,22 @@
   background-color: var(--primary-accent);
   border-radius: 50%;
   display: inline-block;
-  box-shadow: 0 0 0 0 rgba(16, 185, 129, 0.7);
+  box-shadow: 0 0 0 0 rgba(var(--primary-accent-rgb), 0.7);
   animation: pulse 1.8s infinite;
 }
 
 @keyframes pulse {
   0% {
     transform: scale(0.95);
-    box-shadow: 0 0 0 0 rgba(16, 185, 129, 0.7);
+    box-shadow: 0 0 0 0 rgba(var(--primary-accent-rgb), 0.7);
   }
   70% {
     transform: scale(1);
-    box-shadow: 0 0 0 8px rgba(16, 185, 129, 0);
+    box-shadow: 0 0 0 8px rgba(var(--primary-accent-rgb), 0);
   }
   100% {
     transform: scale(0.95);
-    box-shadow: 0 0 0 0 rgba(16, 185, 129, 0);
+    box-shadow: 0 0 0 0 rgba(var(--primary-accent-rgb), 0);
   }
 }
 
@@ -240,8 +240,8 @@
 }
 
 .badgeWrapper:hover {
-  border-color: rgba(16, 185, 129, 0.15);
-  box-shadow: 0 20px 40px -15px rgba(16, 185, 129, 0.05);
+  border-color: rgba(var(--primary-accent-rgb), 0.15);
+  box-shadow: 0 20px 40px -15px rgba(var(--primary-accent-rgb), 0.05);
 }
 
 .badgeTitle {
