@@ -58,7 +58,7 @@ export default function ContactSection() {
   }, []);
 
   return (
-    <section className={styles.section} ref={containerRef}>
+    <section className={styles.section} ref={containerRef} id="contact">
       <div className={styles.container}>
         <div className={styles.header}>
           <span className={styles.tagline}>CONNECT WITH ME</span>

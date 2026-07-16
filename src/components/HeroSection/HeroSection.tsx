@@ -67,7 +67,7 @@ export default function HeroSection() {
   }, [charIndex, isDeleting, wordIndex, typeSpeed]);
 
   return (
-    <section className={styles.container} ref={containerRef}>
+    <section className={styles.container} ref={containerRef} id="home">
       {/* 3D WebGL Particle Constellation Layer */}
       <div className={styles.webglLayer}>
         <CinematicLayer />
