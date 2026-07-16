@@ -114,10 +114,10 @@ export default function ContactSection() {
                   data-size="medium" 
                   data-theme="dark" 
                   data-type="VERTICAL" 
-                  data-vanity="prasannabalaji18" 
+                  data-vanity="prasanna-balaji18" 
                   data-version="v1"
                 >
-                  <a className="badge-base__link LI-simple-link" href="https://in.linkedin.com/in/prasannabalaji18?trk=profile-badge">
+                  <a className="badge-base__link LI-simple-link" href="https://in.linkedin.com/in/prasanna-balaji18?trk=profile-badge">
                     Prasanna B
                   </a>
                 </div>
