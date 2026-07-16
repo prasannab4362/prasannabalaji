@@ -16,8 +16,8 @@ const ParticleSwarm = () => {
     const col = new Float32Array(particleCount * 3);
     const rnd = new Float32Array(particleCount * 3);
 
-    const colorGreen = new THREE.Color('#10b981');
-    const colorWhite = new THREE.Color('#ffffff');
+    const colorPurple = new THREE.Color('#a855f7');
+    const colorBeige = new THREE.Color('#dfd7ca');
 
     for (let i = 0; i < particleCount; i++) {
       // Initialize in circular shells around center
@@ -27,8 +27,8 @@ const ParticleSwarm = () => {
       pos[i * 3 + 1] = Math.sin(angle) * radius;
       pos[i * 3 + 2] = (Math.random() - 0.5) * 8; // Depth spread
 
-      // Mix between emerald green and white
-      const mixedColor = colorWhite.clone().lerp(colorGreen, Math.random() > 0.45 ? 1 : 0.15);
+      // Mix between purple and beige
+      const mixedColor = colorBeige.clone().lerp(colorPurple, Math.random() > 0.45 ? 1 : 0.15);
       col[i * 3] = mixedColor.r;
       col[i * 3 + 1] = mixedColor.g;
       col[i * 3 + 2] = mixedColor.b;
@@ -51,8 +51,8 @@ const ParticleSwarm = () => {
     if (ctx) {
       const gradient = ctx.createRadialGradient(32, 32, 0, 32, 32, 32);
       gradient.addColorStop(0, 'rgba(255, 255, 255, 1)');
-      gradient.addColorStop(0.2, 'rgba(16, 185, 129, 0.8)');
-      gradient.addColorStop(0.5, 'rgba(16, 185, 129, 0.2)');
+      gradient.addColorStop(0.2, 'rgba(168, 85, 247, 0.8)');
+      gradient.addColorStop(0.5, 'rgba(223, 215, 202, 0.2)');
       gradient.addColorStop(1, 'rgba(0, 0, 0, 0)');
       ctx.fillStyle = gradient;
       ctx.fillRect(0, 0, 64, 64);
