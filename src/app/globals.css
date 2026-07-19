@@ -1,21 +1,22 @@
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Outfit:wght@300;400;500;600;700;800&display=swap');
 
 :root {
-  --background: #0a0616; /* Deep obsidian violet */
-  --background-rgb: 10, 6, 22;
-  --foreground: #f7f5f0; /* Creamy off-white (Beige-leaning) */
-  --primary-accent: #a855f7; /* Vibrant royal purple */
-  --primary-accent-rgb: 168, 85, 247;
-  --secondary-accent: #dfd7ca; /* Warm sand beige */
-  --secondary-accent-rgb: 223, 215, 202;
-  --beige-light: #f5f2eb;
-  --beige-muted: #c0b9a8;
+  --background: #090412; /* Rich luxury aubergine-black */
+  --background-rgb: 9, 4, 18;
+  --foreground: #f4efe6; /* Soft rice-paper cream beige */
+  --primary-accent: #a258ff; /* Vibrant neon amethyst violet */
+  --primary-accent-rgb: 162, 88, 255;
+  --secondary-accent: #e2d9c8; /* Warm champagne gold */
+  --secondary-accent-rgb: 226, 217, 200;
+  --beige-light: #fdfbf7;
+  --beige-muted: #d0c7b5;
   --purple-glow: #c084fc;
 }
 
 html,
 body {
-  max-width: 100vw;
+  max-width: 100%;
+  width: 100%;
   overflow-x: hidden;
   background-color: var(--background);
   color: var(--foreground);
