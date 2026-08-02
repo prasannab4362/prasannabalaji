@@ -88,3 +88,15 @@ html {
   width: 100%;
   position: relative;
 }
+
+/* Custom Text Selection Highlight */
+::selection {
+  background-color: rgba(var(--primary-accent-rgb), 0.3);
+  color: #ffffff;
+}
+
+/* Accessibility Focus Visible Ring */
+:focus-visible {
+  outline: 2px solid var(--primary-accent);
+  outline-offset: 4px;
+}
