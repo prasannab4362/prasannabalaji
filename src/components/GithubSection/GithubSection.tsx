@@ -86,8 +86,10 @@ export default async function GithubSection() {
            <div className={styles.streakWrapper}>
              <img 
                src="https://github-readme-streak-stats.herokuapp.com/?user=prasannab4362&theme=radical&hide_border=true&background=0d1117" 
-               alt="GitHub Streak" 
+               alt="Prasanna B GitHub Contribution Streak Stats" 
                className={styles.streakImage}
+               loading="lazy"
+               decoding="async"
              />
            </div>
          </div>
