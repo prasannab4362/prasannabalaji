@@ -91,6 +91,7 @@ export default function Navbar() {
             href={pathname === "/" ? `#${link.id}` : link.path}
             onClick={(e) => handleLinkClick(e, link.id)}
             className={`${styles.link} ${activeSection === link.id ? styles.active : ''}`}
+            aria-current={activeSection === link.id ? 'page' : undefined}
           >
             {link.name}
           </Link>
@@ -101,7 +102,8 @@ export default function Navbar() {
       <button 
         className={styles.menuToggle} 
         onClick={() => setIsOpen(!isOpen)} 
-        aria-label="Toggle Menu"
+        aria-label="Toggle Navigation Menu"
+        aria-expanded={isOpen}
       >
         <span className={`${styles.hamburger} ${isOpen ? styles.open : ''}`}></span>
       </button>
@@ -114,6 +116,7 @@ export default function Navbar() {
             href={pathname === "/" ? `#${link.id}` : link.path}
             onClick={(e) => handleLinkClick(e, link.id)}
             className={`${styles.mobileLink} ${activeSection === link.id ? styles.activeMobile : ''}`}
+            aria-current={activeSection === link.id ? 'page' : undefined}
           >
             {link.name}
           </Link>
