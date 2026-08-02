@@ -304,10 +304,12 @@ export default function AboutSection() {
           </p>
 
           {/* Workflow Tabs */}
-          <div className={styles.tabGroup}>
+          <div className={styles.tabGroup} role="tablist" aria-label="Workflow comparison options">
             {comparisonScenarios.map((scen, idx) => (
               <button 
                 key={idx}
+                role="tab"
+                aria-selected={activeTab === idx}
                 className={`${styles.tabBtn} ${activeTab === idx ? styles.activeTab : ''}`}
                 onClick={() => setActiveTab(idx)}
               >
