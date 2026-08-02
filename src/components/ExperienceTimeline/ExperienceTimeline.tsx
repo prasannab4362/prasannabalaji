@@ -101,10 +101,10 @@ export default function ExperienceTimeline() {
         {/* Timeline Container */}
         <div className={styles.timeline}>
           {/* Background Track Line */}
-          <div className={styles.timelineLineTrack}></div>
+          <div className={styles.timelineLineTrack} aria-hidden="true"></div>
           
           {/* Animated Active Line */}
-          <div className={styles.timelineLineProgress} ref={lineProgressRef}></div>
+          <div className={styles.timelineLineProgress} ref={lineProgressRef} aria-hidden="true"></div>
 
           {experiences.map((exp, index) => (
             <div 
@@ -113,10 +113,10 @@ export default function ExperienceTimeline() {
               ref={(el) => { if (el) itemsRef.current[index] = el; }}
             >
               {/* Central Timeline Node */}
-              <div className={styles.timelineDot}></div>
+              <div className={styles.timelineDot} aria-hidden="true"></div>
 
               {/* Responsive Card */}
-              <div className={styles.timelineCard}>
+              <article className={styles.timelineCard}>
                 <div className={styles.cardHeader}>
                   <div className={styles.roleInfo}>
                     <Briefcase size={18} className={styles.roleIcon} />
@@ -148,7 +148,7 @@ export default function ExperienceTimeline() {
                     <span key={i} className={styles.tag}>{tag}</span>
                   ))}
                 </div>
-              </div>
+              </article>
             </div>
           ))}
         </div>
