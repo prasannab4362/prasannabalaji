@@ -160,16 +160,22 @@ export default function FeaturedProjects() {
         </div>
 
         {/* Filter Bar */}
-        <div className={styles.filterBar}>
-          {filters.map((filter) => (
-            <button
-              key={filter.id}
-              className={`${styles.filterBtn} ${activeFilter === filter.id ? styles.activeFilter : ''}`}
-              onClick={() => setActiveFilter(filter.id)}
-            >
-              {filter.name}
-            </button>
-          ))}
+        <div className={styles.filterBar} role="group" aria-label="Project Categories Filter">
+          {filters.map((filter) => {
+            const count = filter.id === "all" 
+              ? projects.length 
+              : projects.filter(p => p.categories.includes(filter.id)).length;
+            return (
+              <button
+                key={filter.id}
+                className={`${styles.filterBtn} ${activeFilter === filter.id ? styles.activeFilter : ''}`}
+                onClick={() => setActiveFilter(filter.id)}
+                aria-pressed={activeFilter === filter.id}
+              >
+                {filter.name} ({count})
+              </button>
+            );
+          })}
         </div>
 
         {/* Grid */}
