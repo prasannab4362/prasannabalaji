@@ -71,7 +71,7 @@ export default function ContactSection() {
         <div className={styles.contentGrid}>
           {/* Direct Contacts */}
           <div className={styles.contactDetails} ref={cardGridRef}>
-            <a href="mailto:prasannamb4362@gmail.com" className={styles.card}>
+            <a href="mailto:prasannamb4362@gmail.com" className={styles.card} aria-label="Send an email to prasannamb4362@gmail.com">
               <div className={styles.iconWrapper}>
                 <Mail size={24} />
               </div>
@@ -82,7 +82,7 @@ export default function ContactSection() {
               </div>
             </a>
 
-            <a href="tel:+918610318934" className={styles.card}>
+            <a href="tel:+918610318934" className={styles.card} aria-label="Call or message +91 8610318934">
               <div className={styles.iconWrapper}>
                 <Phone size={24} />
               </div>
